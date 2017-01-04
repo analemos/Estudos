@@ -104,8 +104,48 @@ log(
     }
 );
 
+//Aula 35
+
+//by value - cria uma cópia e consequentemente um novo endereço de memória para aquele valor.
+
+var a = 3; //primitive type
+var b;
+b = a; //cria uma cópia e novo endereço na memória.
+
+console.log(a);
+console.log(b);
+//modificar o valor de a não impacta b pois os valores estão em endereços de memória distintos.
+a = 5; 
+
+console.log(a);
+console.log(b);
 
 
+//by reference (all objects including functions) - aponta para o mesmo endereço de memória ao invés de criar uma cópia
+
+var c = {greeting: 'hi'};
+var d;
+
+d = c;
+console.log(c);
+console.log(d);
+
+c.greeting = 'hello'; //mutate
+console.log(c);
+console.log(d);
+
+//by reference even as parameters
+function changing(obj){
+    obj.greeting = 'hola'; //mutate
+}
+changing(d);
+console.log(c);
+console.log(d);
+
+//equals operator sets up new memory space (new address)
+c = {greeting:'teste mudança'};
+console.log(c);
+console.log(d);
 
 
 
