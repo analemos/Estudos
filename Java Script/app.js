@@ -147,11 +147,99 @@ c = {greeting:'teste mudança'};
 console.log(c);
 console.log(d);
 
+//aula 37 - This
+
+/*
+    quando criamos uma função, devemos lembrar que um contexto de execução também é criado.
+*/
+
+
+function teste1(){
+    console.log(this); //this nesse caso faz referenciao ao global context = window
+    this.newVariable = 'hi!'; //newVariable foi criada no contexto global, por isso nao fica dentro de window
+}
 
 
 
+function teste2(){
+    console.log(this); //this nesse caso faz referenciao ao global context = window
+}
+teste1();
+teste2();
+console.log(newVariable);
+
+var teste3 = {
+    name: 'the teste3 object',
+    log: function(){
+        this.name = 'updated name'; //este this aponta para o objeto teste3, pois esta dentro da função log
+        console.log(this);
+        
+        //quando este contexto de execução é criado, mesmo estando dentro de log(), o this faz referencia ao contexto global.
+        //dessa maneira, o nome modificado é apenas visto dentro do global context objetc = window.
+        //parece estranho, mas é o jeito que o JS funciona! 
+        //para sanar esse problema, olhar o objeto teste 4
+        var setname = function(newname){
+            this.name = newname;
+        }
+        setname('updated again')
+        console.log(this);
+    }
+    
+}
+
+var teste4 = {
+    name: 'nome teste4',
+    log: function(){
+        //Dessa maneira sabemos a qual objeto estamos nos referindo. Fica menos confuso! :)
+        var self = this;
+        
+        var setname = function(newname){
+            self.name = newname;
+        }
+        setname('novo nome');
+        console.log(self);
+    }
+}
+
+teste3.log();
+teste4.log();
 
 
+//AULA 39 - ARGUMENTS
+/*
+    arguments são os parametros que são passados para uma função
+    é tb uma palavra reservada para que possamos obter um 'array' com os argumentos passados em uma função
+    SPREAD argument - uma nova maneira de passar argumentos, sem defini-los
+*/
+
+
+function cadastro(nome, pais, idioma = 'en'){
+        
+    if(arguments.length === 0){
+        console.log('missing parameters');
+        return; 
+    }
+    //idioma = idioma || 'en'; =>opçao para browsers que não suportam a definição padrao por parametro
+    console.log(nome);
+    console.log(pais);
+    console.log(idioma);
+    console.log(arguments);
+    console.log('--------------');
+}
+
+cadastro(); //em JS podemos chamar uma função e não passar seus argumentos (que serão undefined)
+cadastro('ana'); // podemos passar parte dos argumentos
+
+//spread arguments - coloque todos os outros parametros dentro do array other
+
+function cadastroSimples(nome, ...other){
+    console.log(nome);
+    console.log(other);
+    console.log(other.length);    
+    console.log(arguments);
+}
+
+cadastroSimples('ana', '25', 'solteira');
 
 
 
