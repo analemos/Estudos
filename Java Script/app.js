@@ -242,7 +242,32 @@ function cadastroSimples(nome, ...other){
 cadastroSimples('ana', '25', 'solteira');
 
 
+//Aula 44 - IIFE - Immediately Invoked Function Expressios
 
+//using a function expression
+
+var greetFunc = function(name){
+    console.log('hello ' + name);
+};
+
+greetFunc('ana');
+
+//using IIFE
+
+var greetFunc2 = function(name){
+   // console.log('hello ' + name);
+    return 'hello ' + name; 
+}('paula');
+
+console.log(greetFunc2);
+
+var firstname = 'joao';
+
+(
+    function(name){
+        console.log('hello ' + name);
+    }(firstname) // (firstname) pode ser colocado dentro ou fora dos parenteses. Escolher uma maneira de utilizá-lo e ser consistente! :)
+);
 
 
 
