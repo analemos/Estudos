@@ -261,16 +261,33 @@ var greetFunc2 = function(name){
 
 console.log(greetFunc2);
 
-var firstname = 'joao';
+var firstname = 'diogo';
 
 (
     function(name){
-        console.log('hello ' + name);
+        var greeting = 'hello';
+        console.log(greeting + ' ' + name);
     }(firstname) // (firstname) pode ser colocado dentro ou fora dos parenteses. Escolher uma maneira de utilizá-lo e ser consistente! :)
 );
 
+console.log(greeting);
 
 
+//Aula 45: IIFEs and safe code
+
+//Vamos aproveitar a função acima. Olhar tb o arquivo greet.js
+//perceba que o codigo acima consegue identificar a var greeting no arquivo greet.js = hola
+//existe uma maneira de tornar uma variavel global;
+
+(
+    function(global, name){
+        var greeting = 'hello';
+        global.greeting = 'hello'; //independete do valor colocado em greet.js, agora fazemos com que greeting seja enxergada globalmente.
+        console.log(greeting + ' ' + name);
+    }(window, firstname) // (firstname) pode ser colocado dentro ou fora dos parenteses. Escolher uma maneira de utilizá-lo e ser consistente! :)
+);
+
+console.log(greeting);
 
 
 
