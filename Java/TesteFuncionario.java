@@ -17,9 +17,6 @@ public class TesteFuncionario{
 
 		System.out.println("Ganho anual: " + f1.calculaGanhoAnual());
 
-		
-
 		f1.mostra();
-
 	}
 }

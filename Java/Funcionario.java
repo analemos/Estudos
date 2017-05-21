@@ -17,13 +17,11 @@ public class Funcionario{
 		return this.salario;
 	}
 
-
 	public void mostra(){
-		//dataAdmissao = new Data();
 		System.out.println("Nome: " + this.nome);
 		System.out.println("Departamento: " + this.departamento);
 		System.out.println("Salario: " + this.salario);
-		System.out.println("Data de Admissão: " + dataAdmissao.dia + "/" + dataAdmissao.mes +  "/" + dataAdmissao.ano);
+		System.out.println("Data de entrada: " + this.dataAdmissao.getFormatada());
 		System.out.println("RG: " + this.rg);
 	}
 	

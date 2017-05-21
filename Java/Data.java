@@ -9,5 +9,8 @@ public class Data{
 		this.mes = mes;
 		this.ano = ano;
 	}
-	
+
+	public String getFormatada(){
+		return this.dia + "/" + this.mes +  "/" + this.ano;
+	}	
 }
