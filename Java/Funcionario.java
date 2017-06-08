@@ -27,3 +27,32 @@ public class Funcionario{
 	
 }
 
+class Empresa{
+	String nome;
+	String cnpj;
+	Funcionario[] funcionarios = new Funcionario[10];
+	int livre = 0;
+
+	public void adiciona(Funcionario f){
+
+		this.funcionarios[this.livre] = f;
+		livre++;
+	}
+
+	public void mostraEmpregados(){
+		for(Funcionario f: funcionarios)
+		System.out.println(" Salário:  " + f.salario);
+	}
+
+	public void mostraTodasAsInformacoes(){
+		for(Funcionario f: funcionarios)
+			f.mostra();
+	}
+
+	public boolean contem(Funcionario f){
+		for(Funcionario funcionario: funcionarios)
+			if(funcionario == f) return true;
+
+		return false;
+	}
+}
